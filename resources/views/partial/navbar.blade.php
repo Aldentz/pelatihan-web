@@ -4,7 +4,7 @@
         <!-- Logo Brand -->
         <a class="navbar-brand fw-bold" href="/">
             <i class="fas fa-palm-tree me-2"></i>
-            <span>🌴 BaliTour</span>
+            <span>🌴 DentzTour</span>
         </a>
 
         <!-- Toggler Mobile -->
@@ -29,17 +29,7 @@
                     <a class="nav-link {{ request()->routeIs('destinations*') ? 'active' : '' }}" href="/destinations">
                         <i class="fas fa-umbrella-beach me-1"></i> Paket Tour
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('galeri*') ? 'active' : '' }}" href="/galeri">
-                        <i class="fas fa-images me-1"></i> Galeri
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('kontak*') ? 'active' : '' }}" href="/kontak">
-                        <i class="fas fa-phone me-1"></i> Kontak
-                    </a>
-                </li>
+                </li>            
             </ul>
 
             <!-- Right Buttons -->

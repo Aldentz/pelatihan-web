@@ -7,11 +7,15 @@ use App\Models\Destination;
 use App\Models\destination as ModelsDestination;
 
 class DestinationController extends Controller
-{
-    public function index()
+{ public function index(Request $request)
     {
-        $destinations = Destination::all();
-        return view('pages.indexDestinasi', compact('destinations'));
+        $keyword = $request->input('search');
+        if ($keyword != '') {
+            $destinations = Destination::where('name', 'LIKE', '%' . $keyword . '%')->paginate(5);
+        } else {
+            $destinations = Destination::orderBy('id')->paginate(5);
+        }
+        return view(view:'pages.indexDestinasi', data: compact('destinations'));
     }
 
     public function show($id)
@@ -57,4 +61,6 @@ class DestinationController extends Controller
             return redirect('/destinations')->with( 'error', 'Destination not found.');
         }
     }
+
+   
 }

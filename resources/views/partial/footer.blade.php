@@ -8,7 +8,7 @@
                 <div class="mb-4">
                     <h3 class="fw-bold mb-3">
                         <i class="fas fa-palm-tree me-2 text-warning"></i>
-                        BaliTour
+                        DentzTour
                     </h3>
                     <p class="text-light opacity-90 mb-0">
                         Jelajahi keindahan Pulau Dewata dengan paket wisata terbaik. 
@@ -78,7 +78,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <p class="mb-0 text-light opacity-75">
-                        © 2026 <strong>BaliTour</strong>. Semua hak dilindungi. 
+                        © 2026 <strong>DentzTour</strong>. Semua hak dilindungi. 
                         <i class="fas fa-heart text-danger ms-1"></i> Dibuat dengan ❤️ untuk Bali
                     </p>
                 </div>
