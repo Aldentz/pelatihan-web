@@ -3,6 +3,7 @@
 use App\Models\Destination;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,3 +52,12 @@ Route::post("/destinations", [DestinationController::class, 'store']);
 Route::delete('/destinations/{id}', [DestinationController::class, 'delete']);
 Route::get("/destination/{id}/edit", [DestinationController::class, 'edit']);
 Route::put("/destination/{id}/update", [DestinationController::class, 'update']);
+
+
+
+Route::get(uri: "/users", action: [UserController::class, 'index']);
+Route::get("/users/create", [UserController::class, 'create']);
+Route::post("/users", [UserController::class, 'store']);
+Route::delete('/users/{id}/delete', [UserController::class, 'delete']);
+Route::get("/users/{id}/edit", [UserController::class, 'edit']);
+Route::put("/users/{id}/update", [UserController::class, 'update']);

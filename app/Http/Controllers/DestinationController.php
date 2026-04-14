@@ -20,8 +20,8 @@ class DestinationController extends Controller
 
     public function show($id)
     {
-        $destination = Destination::find($id);
-        return view('pages.destinasi1', compact('destination'));
+        $destinations = Destination::find($id);
+        return view('pages.destinasi1', compact('destinasions'));
     }
 
     public function create()
@@ -36,9 +36,9 @@ class DestinationController extends Controller
 
     public function delete($id)
     {
-        $destination = Destination::find($id);
-        if ($destination) {
-            $destination->delete();
+        $destinations = Destination::find($id);
+        if ($destinations) {
+            $destinations->delete();
             return redirect(to:'/destinations')->with(key: 'success', value: 'Destination deleted successfully.');
         } else {
             return redirect(to:'/destinations')->with(key: 'error', value: 'Destination not found.');
@@ -48,14 +48,14 @@ class DestinationController extends Controller
 
     public function edit($id)
     {
-        $destination = Destination::find($id);
-        return view('pages.editDestination', compact('destination'));
+        $destinations = Destination::find($id);
+        return view('pages.editDestination', compact('destinations'));
     }
     public function update(Request $request, $id)
     {
-        $destination = Destination::find($id);
-        if ($destination) {
-            $destination->update($request->all());
+        $destinations = Destination::find($id);
+        if ($destinations) {
+            $destinations->update($request->all());
             return redirect('/destinations')->with('success', 'Destination updated successfully.');
         } else {
             return redirect('/destinations')->with( 'error', 'Destination not found.');
