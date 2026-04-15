@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-<form action="/users/{{ $user->id }}/update" method="post" class="form-floating container mt-5">
+<form action="{{route('attractions.update', $user->id )}}" method="post" class="form-floating container mt-5">
     @csrf
     @method('PUT')
     <div class="form-floating mb-3 ">

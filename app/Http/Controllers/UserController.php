@@ -13,18 +13,18 @@ class UserController extends Controller
         } else {
             $users = User::orderBy('id')->paginate(10);
         }
-        return view(view:'pages.indexUser', data: compact('users'));
+        return view(view:'pages.Users.indexUser', data: compact('users'));
     }
 
     public function show($id)
     {
         $user = User::find($id);
-        return view('pages.destinasi1', compact('user'));
+        return view('pages.Users.destinasi1', compact('user'));
     }
 
     public function create()
     {
-        return view(view:'pages.createUser');
+        return view(view:'pages.Users.createUser');
     }
     public function store(Request $request)
     {
@@ -47,7 +47,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('pages.editUser', compact('user'));
+        return view('pages.Users.editUser', compact('user'));
     }
     public function update(Request $request, $id)
     {

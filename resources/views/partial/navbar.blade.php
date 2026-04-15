@@ -29,7 +29,12 @@
                     <a class="nav-link {{ request()->routeIs('destinations*') ? 'active' : '' }}" href="/destinations">
                         <i class="fas fa-umbrella-beach me-1"></i> Paket Tour
                     </a>
-                </li>            
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('users*') ? 'active' : '' }}" href="/users">
+                        <i class="fas fa-person me-1"></i> Users
+                    </a>
+                </li>                   
             </ul>
 
             <!-- Right Buttons -->

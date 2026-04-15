@@ -10,7 +10,7 @@
 
     <div class="d-flex justify-content-between mb-2">
         <h2>Destinations List</h2>
-        <form action="/destinations" method="GET">
+        <form action="{{route('destinations.index')}}" method="GET">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="search..." name="search" value="{{request('search')}}">
                 <button class="btn btn-outline-secondary" type="submit">Search</button>
@@ -39,7 +39,7 @@
             @foreach ($destinations as $d)
                 <tr>
                    <td>
-                   <a href="/destinations/{{ $d->id }}">
+                   <a href="{{ route('destinations.show', $d->id)}}">
                     {{ $loop->iteration }}
                     </a>
                     </td>
@@ -51,8 +51,8 @@
                     <td>{{ $d->ticket_price }}</td>
                     <td>
                         <div class="btn-group" role="group">
-                        <a href="/destination/{{ $d->id }}/edit" class="btn btn-warning">✏️</a>
-                        <form action="/destinations/{{ $d->id }}" method="post" style="display: inline;">
+                        <a href="{{ route ('destinations.edit', $d->id)}}" class="btn btn-warning">✏️</a>
+                        <form action="{{ route ('destinations.destroy', $d->id)}}" method="post" style="display: inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure To Delete {{ $d->name }}?')
@@ -67,7 +67,7 @@
     </table>
     </div>
 </div>
-    <a href="/destination/create" class="btn btn-success">Create Destination</a>
+    <a href="{{route('destinations.create')}}" class="btn btn-success">Create Destination</a>
 
 </div>
 
