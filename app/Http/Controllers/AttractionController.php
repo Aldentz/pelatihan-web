@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attraction;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use App\Models\destination;
 
 class AttractionController extends Controller
 {
@@ -26,11 +28,17 @@ class AttractionController extends Controller
 
     public function create()
     {
-        return view(view:'pages.Attractions.createAttraction');
+        $destinations = destination::all();
+        return view('pages.Attractions.createAttraction',compact('destinations'));
     }
     public function store(Request $request)
     {
-        Attraction::create($request->all());
+        $validated =$request->validate( rules:[
+            'destination_id'=> 'required|exists:destination,id',
+            'name' => 'required',
+            'description' => 'nullable',
+        ]);
+        \App\Models\Attraction::create($validated);
         return redirect(to:'/attractions')->with(key: 'success', value: 'Attraction created successfully.');
     }
 
@@ -48,12 +56,20 @@ class AttractionController extends Controller
 
     public function edit($id)
     {
+        $destinations = destination::all();
         $attractions = Attraction::find($id);
-        return view('pages.Attractions.editAttraction', compact('attractions'));
+        return view('pages.Attractions.editAttraction', compact('attractions','destinations'));
     }
     public function update(Request $request, $id)
     {
-        $attractions = Attraction::find($id);
+        $validatedData = $request->validate(
+           [
+            'destination_id'=> 'required|exists:destination,id',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
+ 
+        $attractions = \App\Models\Attraction::find($id);
         if ($attractions) {
             $attractions->update($request->all());
             return redirect('/attractions')->with('success', 'Attraction updated successfully.');

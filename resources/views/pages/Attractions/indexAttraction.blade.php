@@ -25,8 +25,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Password</th>
+                    <th>Deskripsi</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -38,8 +37,7 @@
                                 {{ $loop->iteration }}
                             </a>
                         <td>{{ $a->name }}</td>
-                        <td>{{ $a->email }}</td>
-                        <td>{{ $a->password }}</td>
+                        <td>{{ $a->description }}</td>
                         <td>
                             <div class="btn-group" role="group">
                                 <a href="{{ route ('attractions.edit', $a->id)}}" class="btn btn-warning">✏️</a>
@@ -56,7 +54,7 @@
         </table>
     </div>                  
  </div>
- <a href="{{route('attractions.create')}}" class="btn btn-success">Create Destination</a>
+ <a href="{{route('attractions.create')}}" class="btn btn-success">Add users</a>
 </div>
     <div class="mt-3 d-flex justify-content-center">
     {{ $attractions->links('pagination::bootstrap-5') }}

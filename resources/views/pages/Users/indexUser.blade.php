@@ -8,7 +8,7 @@
         @endif
     <div class="d-flex justify-content-between mb-2">
         <h2>Users List</h2>
-        <form action="{{route('attractions.index')}}" method="GET">
+        <form action="{{route('users.index')}}" method="GET">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="search..." name="search" value="{{request('search')}}">
                 <button class="btn btn-outline-secondary" type="submit">Search</button>
@@ -31,10 +31,10 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($attractions as $a)
+                @foreach ($users as $a)
                     <tr>
                         <td>
-                            <a href="{{route('attractions.show', $a->id)}}">
+                            <a href="{{route('users.show', $a->id)}}">
                                 {{ $loop->iteration }}
                             </a>
                         <td>{{ $a->name }}</td>
@@ -42,8 +42,8 @@
                         <td>{{ $a->password }}</td>
                         <td>
                             <div class="btn-group" role="group">
-                                <a href="{{ route ('attractions.edit', $a->id)}}" class="btn btn-warning">✏️</a>
-                                <form action="{{ route ('attractions.destroy', $a->id)}}" method="post" style="display: inline;">
+                                <a href="{{ route ('users.edit', $a->id)}}" class="btn btn-warning">✏️</a>
+                                <form action="{{ route ('users.destroy', $a->id)}}" method="post" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure To Delete {{ $a->name }}?')">🗑️</button>
@@ -56,10 +56,10 @@
         </table>
     </div>                  
  </div>
- <a href="{{route('attractions.create')}}" class="btn btn-success">Create Destination</a>
+ <a href="{{route('users.create')}}" class="btn btn-success">Create Destination</a>
 </div>
     <div class="mt-3 d-flex justify-content-center">
-    {{ $attractions->links('pagination::bootstrap-5') }}
+    {{ $users->links('pagination::bootstrap-5') }}
     </div>
             </tbody>
         </table>

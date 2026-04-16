@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Schema\ColumnDefinition;
+use Illuminate\Notifications\Action;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -14,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('attractions', callback: function (Blueprint $table) {
             $table->id();
-            $table->string(column: 'name');
-            $table->text(column: 'description')->nullable();
+            $table->foreignId('destination_id')->constrained()->oneDelete( 'cascade');
+            $table->string('name');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
