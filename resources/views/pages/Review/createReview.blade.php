@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-    <form action="{{ route('attractions.store') }}" method="post" class="form-floating container mt-5">
+    <form action="{{ route('reviews.store') }}" method="post" class="form-floating container mt-5">
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul class="mb-0">
@@ -12,32 +12,32 @@
         @endif
         @csrf
         <div class="col-12">
-            <label for="destination_id" class="from-label">destination</label>
-            <select id="destination_id" name="destination_id" class="form-control " required>
-                <option value="">Select Destination</option>
-                @foreach ($destinations as $destination)
-                <option value="{{ $destination->id}}" {{ old('destination_id') ==
-                $destination->id ? 'selected' : ''}}>
-                    {{ $destination->name }}
+            <label for="attraction_id" class="from-label">destination</label>
+            <select id="attraction_id" name="attraction_id" class="form-control " required>
+                <option value="">Select Comment</option>
+                @foreach ($attractions as $attraction)
+                <option value="{{ $attraction->id}}" {{ old('attraction_id') ==
+                $attraction->id ? 'selected' : ''}}>
+                    {{ $attraction->name }}
                 </option>
                 @endforeach
             </select>
-            @error('destination_id')
+            @error('attraction_id')
             <div class="invalid-feedback">{{ $message }}</div>    
             @enderror
         </div>  
         <div class="form-floating mb-3 ">
             <input type="text" class="form-control" id="floatingInput" placeholder="Asia Heritage" name="name"
                >
-            <label for="floatingInput">Nama User</label>
+            <label for="floatingInput">Nama Reviewer</label>
             @error('name')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-floating mb-3">
-            <textarea name="description" id="" class="form-control" placeholder="Description"></textarea>
-            <label for="floatingPassword">Description</label>
+            <textarea name="comment" id="" class="form-control" placeholder="comment"></textarea>
+            <label for="floatingPassword">Comment</label>
         </div>
-        <button type="submit" class="btn btn-primary">Create User</button>
+        <button type="submit" class="btn btn-primary">Create comment</button>
     </form>
 @endsection

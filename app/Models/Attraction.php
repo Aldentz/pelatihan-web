@@ -17,4 +17,9 @@ class Attraction extends Model
     {
         return $this->belongsTo( related: Destination::class);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

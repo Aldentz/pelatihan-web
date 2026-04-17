@@ -23,7 +23,7 @@ class AttractionController extends Controller
         public function show($id)
     {
         $attractions = Attraction::find($id);
-        return view('pages.Attractions.destinasi1', compact('attractions'));
+        return view('pages.Attractions.detailAttraction', compact('attractions'));
     }
 
     public function create()
@@ -34,7 +34,7 @@ class AttractionController extends Controller
     public function store(Request $request)
     {
         $validated =$request->validate( rules:[
-            'destination_id'=> 'required|exists:destination,id',
+            'destination_id'=> 'required|exists:destinations,id',
             'name' => 'required',
             'description' => 'nullable',
         ]);
@@ -62,9 +62,9 @@ class AttractionController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate(
+        $validated = $request->validate(
            [
-            'destination_id'=> 'required|exists:destination,id',
+            'destination_id'=> 'required|exists:destinations,id',
             'name' => 'required|string|max:255',
             'description' => 'required|string',
         ]);

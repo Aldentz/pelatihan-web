@@ -62,3 +62,27 @@
             </tbody>
         </table>
 @endsection
+
+@push('Scripts')
+<script>
+    class alert {
+        constructor(message) {
+            this.message = message;
+        }
+
+        show() {
+            alert(this.message);
+        }
+    }
+    let alertElement = document.querySelector('.alert');
+    if (alertElement) {
+        setTimeout(() => {
+            alertElement.style.transition = 'opacity 3s ease';
+            alertElement.style.opacity = '0';
+            setTimeout(() => {
+                alertElement.remove();
+            }, 3000);
+        });
+    }   
+</script>
+@endpush

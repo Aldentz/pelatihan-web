@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-    <form action="/attractions" method="post" class="form-floating container mt-5">
+    <form action="/users" method="post" class="form-floating container mt-5">
         @csrf
         <div class="form-floating mb-3 ">
             <input type="text" class="form-control" id="floatingInput" placeholder="Asia Heritage" name="name">

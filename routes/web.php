@@ -78,3 +78,5 @@ Route::prefix('attractions')->name('attractions.')->group( function(){
     Route::get( '/{id}/show', action: [AttractionController::class, 'show'])->name(name: 'show');
 });
 
+use App\Http\Controllers\ReviewController;
+Route::resource('reviews', ReviewController::class);
