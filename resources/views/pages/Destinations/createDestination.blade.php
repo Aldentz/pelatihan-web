@@ -1,8 +1,15 @@
 @extends('master')
 
 @section('content')
-<form action="/destinations" method="post" class="form-floating container mt-5">
+<form action="/destinations" method="post" class="form-floating container mt-5" enctype="multipart/form-data">
     @csrf
+    <div class="form-floating mb-3">
+        <input type="file" class="form-control" id="floatInput" placeholder="Image" name="image" value="{{ old('image') }}" accept=".jpg,.jpeg,.png">
+        <label for="floatingInput">Gambar Destinasi</label>
+        @error('image')
+            <div class="invalid-feedback">{{ $message }}</div>            
+        @enderror
+    </div>
     <div class="form-floating mb-3 ">
         <input type="text" class="form-control" id="floatingInput" placeholder="Asia Heritage" name="name">
         <label for="floatingInput">Nama Destinasi</label>

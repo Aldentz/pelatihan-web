@@ -7,6 +7,12 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\UserController;
 use Faker\Guesser\Name;
 
+require __DIR__.'/auth.php';
+
+Route::get('dashboard', function () {
+    return redirect()->route('destinations.index');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/', function () {
     return view('welcome');
 });

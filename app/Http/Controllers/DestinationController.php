@@ -39,7 +39,7 @@ class DestinationController extends Controller
             'ticket_price' => 'required|numeric',
             'working_hours' => 'required|string|max:255',
             'working_days' => 'required|string|max:255',
-            'image' => 'nullable|image|max:2048|m1mes:jpg,jpeg,png',
+            'image' => 'nullable|image|max:2048|mimes:jpg,jpeg,png',
         ]);
 
         if ($request->hasFile('image')) {
@@ -72,6 +72,7 @@ class DestinationController extends Controller
     }
     public function update(Request $request, $id)
     {
+       
       $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable',
@@ -79,7 +80,7 @@ class DestinationController extends Controller
             'ticket_price' => 'required|numeric',
             'working_hours' => 'required|string|max:255',
             'working_days' => 'required|string|max:255',
-            'image' => 'nullable|image|max:2048|m1mes:jpg,jpeg,png',
+            'image' => 'nullable|image|max:2048|mimes:jpg,jpeg,png',
         ]);
 
         $destination = Destination::find($id);
@@ -93,7 +94,8 @@ class DestinationController extends Controller
             $imagepath = $request->file('image')->store('image', 'public');
             $validated['image'] = basename($imagepath);
         }
-        Destination::update($validated);
+       
+     $destination->update($validated);
            return redirect(to:'/destinations')->with(key: 'success', value: 'Destination updated successfully.');
         } else {
             return redirect(to:'/destinations')->with(key: 'error', value: 'Destination not found.');
